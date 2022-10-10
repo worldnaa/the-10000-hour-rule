@@ -17,16 +17,16 @@ function calculator() {
   const timeResult = document.querySelector(".time_result");
 
   if(fieldValue.value == "") {
-    alert('입력되지 않았습니다.');
-    fieldValue.focus();
-    return false;
+      alert('입력되지 않았습니다.');
+      fieldValue.focus();
+      return false;
   } else if(timeValue.value == "") {
-    alert('입력되지 않았습니다.');
-    timeValue.focus();
-    return false;
+      alert('입력되지 않았습니다.');
+      timeValue.focus();
+      return false;
   } else if(timeValue_int > 24) {
-    alert('잘못된 값입니다. 24이하의 값을 입력해 주세요.');
-    return false;
+      alert('잘못된 값입니다. 24이하의 값을 입력해 주세요.');
+      return false;
   }
 
   result.style.display = 'none';
@@ -55,17 +55,13 @@ window.onclick = function(event) {
   }
 }
 
+//clipboard API를 사용한 클립보드 복사
 function copyUrl() {
-  let url = window.location.href;
-  let tmp = document.createElement('input');
+  const url = window.location.href;
 
-  document.body.appendChild(tmp);
-  tmp.value = url;
-  tmp.select();
-  document.execCommand("copy");
-  document.body.removeChild(tmp);
-
-  alert("URL이 복사되었습니다");
+  navigator.clipboard.writeText(url).then(() => {
+    alert("URL이 복사되었습니다");
+  });
 }
 
 //querySelector로 가져온 것을 클릭했을 때의 이벤트를 등록한다
